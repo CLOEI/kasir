@@ -12,7 +12,7 @@ class Product extends Model
     protected $fillable = ['name', 'price', 'is_packet', "photo_url"];
 
     public function transactions() {
-        return $this->belongsToMany(Transaksi::class, 'transaksi', 'product_id', 'transaction_id');
+        return $this->belongsToMany(Transaction::class, 'transactions', 'product_id', 'transaction_id');
     }
 
     public function productItems() {

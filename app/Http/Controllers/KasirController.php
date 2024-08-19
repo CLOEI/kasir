@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kasir;
+use App\Models\Cashier;
 use Illuminate\Http\Request;
 
 class KasirController extends Controller
@@ -13,9 +13,9 @@ class KasirController extends Controller
     }
 
     public function login_or_register(Request $request) {
-        $kasir = Kasir::where('name', $request->kasirID)->first();
+        $kasir = Cashier::where('name', $request->kasirID)->first();
         if ($kasir == null) {
-            Kasir::create([
+            Cashier::create([
                 'name' => $request->kasirID
             ]);
         }
