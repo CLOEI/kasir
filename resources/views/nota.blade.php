@@ -42,8 +42,8 @@
             </div>
             <div class="text-right">
                 <p>TOTAL (Termasuk Pajak) : Rp. {{ number_format($totalIncludingTax) }}</p>
-                <p>JUMLAH BAYAR : Rp. {{ number_format($transaksi->bayar) }}</p>
-                <p>KEMBALIAN : Rp. {{ number_format($transaksi->kembali) }}</p>
+                <p>JUMLAH BAYAR : Rp. {{ number_format($transaksi->jumlah_bayar) }}</p>
+                <p>KEMBALIAN : Rp. {{ number_format($transaksi->jumlah_bayar - $totalIncludingTax) }}</p>
                 <p>MTD BAYAR : Tunai</p>
                 <p>STATUS BAYAR : Lunas</p>
             </div>

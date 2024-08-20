@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('id_kasir');
             $table->timestamp('tgl_transaksi');
+            $table->integer('jumlah_bayar');
             $table->enum('tipe_pesanan', ['Dine In', 'Take Away', 'Delivery']);
         });
     }

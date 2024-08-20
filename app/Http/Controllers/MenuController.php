@@ -92,6 +92,7 @@ class MenuController extends Controller
             'id_kasir' => $id_kasir,
             'tgl_transaksi' => now(),
             'tipe_pesanan' => 'Dine In',
+            'jumlah_bayar' => $request->jumlah_bayar,
         ]);
 
         $cart = session()->get('cart', []);
