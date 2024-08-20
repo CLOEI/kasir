@@ -92,7 +92,13 @@
         function submitForm() {
             const jumlahBayar = document.getElementById('jumlah-bayar').value;
             const total =
-                {{ array_sum(array_map(function ($item) {return is_array($item) ? $item['product']->price * $item['quantity'] : $item->price * $item->quantity;}, $cart)) }};
+                {{ !empty($cart)
+                    ? array_sum(
+                        array_map(function ($item) {
+                            return is_array($item) ? $item['product']->price * $item['quantity'] : $item->price * $item->quantity;
+                        }, $cart),
+                    )
+                    : 0 }};
 
             if (jumlahBayar < total) {
                 document.getElementById('error-message').classList.remove('hidden');
