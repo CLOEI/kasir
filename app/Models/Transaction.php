@@ -12,7 +12,13 @@ class Transaction extends Model
     protected $fillable = ['id_kasir', 'tgl_transaksi', 'tipe_pesanan'];
     public $timestamps = false;
 
-    public function kasir() {
-        return $this->belongsTo(Kasir::class, 'id_kasir', 'id');
+    public function cashier()
+    {
+        return $this->belongsTo(Cashier::class, 'id_kasir', 'name');
+    }
+
+    public function transactionDetails()
+    {
+        return $this->hasMany(TransactionDetail::class, 'transaction_id', 'id');
     }
 }

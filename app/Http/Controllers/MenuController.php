@@ -12,12 +12,14 @@ use Illuminate\Support\Facades\Log;
 
 class MenuController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $products = Product::all();
         return view('menu', ['products' => $products]);
     }
 
-    public function add_to_cart(Request $request) {
+    public function add_to_cart(Request $request)
+    {
         $product = Product::where('id', $request->product_id)->with('productItems')->first();
         $cart = $request->session()->get('cart', []);
         $found = false;
@@ -53,7 +55,8 @@ class MenuController extends Controller
         return redirect()->route('menu');
     }
 
-    public function remove_from_cart(Request $request) {
+    public function remove_from_cart(Request $request)
+    {
         $cart = $request->session()->get('cart', []);
         $updatedCart = [];
 
@@ -69,12 +72,14 @@ class MenuController extends Controller
         return redirect()->route('cart');
     }
 
-    public function cart(Request $request) {
+    public function cart(Request $request)
+    {
         $cart = $request->session()->get('cart');
         return view('cart', ['cart' => $cart]);
     }
 
-    public function delete_cart(Request $request) {
+    public function delete_cart(Request $request)
+    {
         $request->session()->forget('cart');
         return redirect()->route('cart');
     }
@@ -86,7 +91,7 @@ class MenuController extends Controller
         $transaksi = Transaction::create([
             'id_kasir' => $id_kasir,
             'tgl_transaksi' => now(),
-            'tipe_pesanan' => 'dine_in',
+            'tipe_pesanan' => 'Dine In',
         ]);
 
         $cart = session()->get('cart', []);

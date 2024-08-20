@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,3 +15,5 @@ Route::post("/menu/delete_cart", [\App\Http\Controllers\MenuController::class, "
 Route::post("/menu/submit_cart", [\App\Http\Controllers\MenuController::class, "submit_cart"])->name("submit_cart");
 
 Route::post("/login_or_register", [\App\Http\Controllers\KasirController::class, "login_or_register"])->name("login_or_register");
+
+Route::get('/transaksi/{id}', [TransactionController::class, 'show'])->name('transaksi.show');
