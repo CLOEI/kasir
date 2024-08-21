@@ -13,6 +13,7 @@ Route::post("/menu/add_to_cart", [\App\Http\Controllers\MenuController::class, "
 Route::post("/menu/remove_from_cart", [\App\Http\Controllers\MenuController::class, "remove_from_cart"])->name("remove_from_cart");
 Route::post("/menu/delete_cart", [\App\Http\Controllers\MenuController::class, "delete_cart"])->name("delete_cart");
 Route::post("/menu/submit_cart", [\App\Http\Controllers\MenuController::class, "submit_cart"])->name("submit_cart");
+Route::post("/menu/update_cart_quantity", [\App\Http\Controllers\MenuController::class, "update_cart_quantity"])->name("update_cart_quantity");
 
 Route::post("/login_or_register", [\App\Http\Controllers\KasirController::class, "login_or_register"])->name("login_or_register");
 

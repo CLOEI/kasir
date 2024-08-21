@@ -113,9 +113,38 @@ class MenuController extends Controller
             }
         }
 
-        // Clear the cart
         session()->forget('cart');
 
         return redirect()->route('transaksi.show', ['id' => $transaksi->id])->with('success', 'Transaction completed successfully!');
+    }
+
+    public function update_cart_quantity(Request $request)
+    {
+        $productId = $request->input('product_id');
+        $quantity = (int) $request->input('quantity');
+
+        $cart = $request->session()->get('cart', []);
+
+        $productFound = false;
+        foreach ($cart as &$item) {
+            if ($item['product']->id == $productId) {
+                $productFound = true;
+                if ($quantity < 1) {
+                    $cart = array_filter($cart, function ($cartItem) use ($productId) {
+                        return $cartItem['product']->id != $productId;
+                    });
+                } else {
+                    $item['quantity'] = $quantity;
+                }
+                break;
+            }
+        }
+
+        if (!$productFound) {
+            return redirect()->back()->with('error', 'Product not found in cart.');
+        }
+
+        $request->session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Cart updated successfully.');
     }
 }

@@ -22,32 +22,29 @@
                 @csrf
                 <ul class="space-y-4">
                     @foreach ($cart as $item)
-                        @if (is_array($item))
-                            <li class="bg-white shadow-md rounded-lg p-4">
-                                <div class="flex justify-between items-center">
-                                    <span class="font-semibold">{{ $item['product']->name }}
-                                        (x{{ $item['quantity'] }})
-                                    </span>
-                                    <span class="text-gray-600">Rp. {{ $item['product']->price }}</span>
+                        <li class="bg-white shadow-md rounded-lg p-4">
+                            <div class="flex justify-between items-center">
+                                <span class="font-semibold">{{ $item['product']->name }}
+                                    (x<span id="quantity-{{ $item['product']->id }}">{{ $item['quantity'] }}</span>)
+                                </span>
+                                <span class="text-gray-600">Rp. {{ $item['product']->price }}</span>
+                                <div class="flex items-center space-x-2">
+                                    <button type="button" class="bg-gray-200 px-2 py-1 rounded"
+                                        onclick="updateQuantity({{ $item['product']->id }}, -1)">-</button>
+                                    <button type="button" class="bg-gray-200 px-2 py-1 rounded"
+                                        onclick="updateQuantity({{ $item['product']->id }}, 1)">+</button>
                                     <button type="button" class="text-red-500"
                                         onclick="removeFromCart({{ $item['product']->id }})">Delete</button>
                                 </div>
-                                @if (isset($item['items']))
-                                    <ul class="mt-2 space-y-2">
-                                        @foreach ($item['items'] as $productItem)
-                                            <li class="text-gray-700">- {{ $productItem->name }}</li>
-                                        @endforeach
-                                    </ul>
-                                @endif
-                            </li>
-                        @else
-                            <li class="bg-white shadow-md rounded-lg p-4 flex justify-between items-center">
-                                <span class="font-semibold">{{ $item->name }} (x{{ $item->quantity }})</span>
-                                <span class="text-gray-600">Rp. {{ $item->price }}</span>
-                                <button type="button" class="text-red-500"
-                                    onclick="removeFromCart({{ $item->id }})">Delete</button>
-                            </li>
-                        @endif
+                            </div>
+                            @if (isset($item['items']))
+                                <ul class="mt-2 space-y-2">
+                                    @foreach ($item['items'] as $productItem)
+                                        <li class="text-gray-700">- {{ $productItem->name }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </li>
                     @endforeach
                 </ul>
                 <div class="mt-6 text-right">
@@ -112,6 +109,25 @@
             input.value = jumlahBayar;
             form.appendChild(input);
             form.submit();
+        }
+
+        function updateQuantity(productId, change) {
+            const quantityElement = document.getElementById(`quantity-${productId}`);
+            let quantity = parseInt(quantityElement.innerText);
+            quantity += change;
+
+            quantityElement.innerText = quantity;
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/menu/update_cart_quantity';
+            form.innerHTML = `
+                    @csrf
+                    <input type="hidden" name="product_id" value="${productId}">
+                    <input type="hidden" name="quantity" value="${quantity}">
+                `;
+            document.body.appendChild(form);
+            form.submit();
+
         }
 
         function removeFromCart(productId) {

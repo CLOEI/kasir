@@ -5,8 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -22,9 +21,15 @@ return new class extends Migration
         });
 
         DB::table('products')->insert([
-            ['name' => 'Super Blitz 2', 'price' => 37000, 'is_packet' => true],
-            ['name' => 'Kimchi 2', 'price' => 28000, 'is_packet' => true],
-            ['name' => 'Chicken Nugget Crispy', 'price' => 19500, 'is_packet' => false],
+            ['name' => 'Super Blitz 2', 'price' => 37000, 'is_packet' => true, 'photo_url' => '/assets/blitz2.jpeg'],
+            ['name' => 'Kimchi 2', 'price' => 28000, 'is_packet' => true, 'photo_url' => '/assets/kimchi.jpeg'],
+            ['name' => 'Chicken Nugget Crispy', 'price' => 19500, 'is_packet' => false, 'photo_url' => '/assets/nugget.jpeg'],
+            ['name' => 'Sweecy Rice Box', 'price' => 21000, 'is_packet' => false, 'photo_url' => '/assets/sweecy.webp'],
+            ['name' => 'Blackpepper Rice Box', 'price' => 20000, 'is_packet' => false, 'photo_url' => '/assets/blackpepper.webp'],
+            ['name' => 'Super Blitz Hemat Mineral', 'price' => 27200, 'is_packet' => true, 'photo_url' => '/assets/hemat.webp'],
+            ['name' => 'Redol', 'price' => 17.000, 'is_packet' => false, 'photo_url' => '/assets/redol.webp'],
+            ['name' => 'Strawberry Float', 'price' => 14000, 'is_packet' => false, 'photo_url' => '/assets/strawberry.webp'],
+            ['name' => 'Lafanta Blitz', 'price' => 14000, 'is_packet' => false, 'photo_url' => '/assets/lafanta.webp'],
         ]);
     }
 

@@ -5,8 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -25,6 +24,9 @@ return new class extends Migration
             ['name' => 'Nasi', 'product_id' => 1],
             ['name' => 'Teh Obeng', 'product_id' => 1],
             ['name' => 'Cola', 'product_id' => 2],
+            ['name' => 'Paha', 'product_id' => 6],
+            ['name' => 'Nasi', 'product_id' => 6],
+            ['name' => 'Air Mineral', 'product_id' => 6],
         ]);
 
     }
