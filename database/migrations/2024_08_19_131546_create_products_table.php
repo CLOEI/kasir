@@ -27,7 +27,7 @@ return new class extends Migration {
             ['name' => 'Sweecy Rice Box', 'price' => 21000, 'is_packet' => false, 'photo_url' => '/assets/sweecy.webp'],
             ['name' => 'Blackpepper Rice Box', 'price' => 20000, 'is_packet' => false, 'photo_url' => '/assets/blackpepper.webp'],
             ['name' => 'Super Blitz Hemat Mineral', 'price' => 27200, 'is_packet' => true, 'photo_url' => '/assets/hemat.webp'],
-            ['name' => 'Redol', 'price' => 17.000, 'is_packet' => false, 'photo_url' => '/assets/redol.webp'],
+            ['name' => 'Redol', 'price' => 17000, 'is_packet' => false, 'photo_url' => '/assets/redol.webp'],
             ['name' => 'Strawberry Float', 'price' => 14000, 'is_packet' => false, 'photo_url' => '/assets/strawberry.webp'],
             ['name' => 'Lafanta Blitz', 'price' => 14000, 'is_packet' => false, 'photo_url' => '/assets/lafanta.webp'],
         ]);

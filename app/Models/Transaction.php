@@ -9,7 +9,7 @@ class Transaction extends Model
 {
     use HasFactory;
     protected $table = "transactions";
-    protected $fillable = ['id_kasir', 'tgl_transaksi', 'tipe_pesanan', 'jumlah_bayar'];
+    protected $fillable = ['id_kasir', 'tgl_transaksi', 'tipe_pesanan', 'jumlah_bayar', 'nomor_meja'];
     public $timestamps = false;
 
     public function cashier()

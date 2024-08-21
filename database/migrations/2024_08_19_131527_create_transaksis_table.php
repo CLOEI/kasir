@@ -18,6 +18,7 @@ return new class extends Migration {
                 ->on('cashiers')
                 ->onDelete('cascade');
             $table->timestamp('tgl_transaksi');
+            $table->integer('nomor_meja');
             $table->integer('jumlah_bayar');
             $table->enum('tipe_pesanan', ['Dine In', 'Take Away', 'Delivery']);
             $table->timestamps();

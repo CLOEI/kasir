@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::create('cashiers', function (Blueprint $table) {
             $table->string('name')->unique();
+            $table->integer('id')->autoIncrement();
         });
     }
 

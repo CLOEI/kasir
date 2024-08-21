@@ -18,7 +18,7 @@
             </svg>
         </a>
         <div class="bg-white p-4 rounded-md max-w-sm mx-auto text-center">
-            <h1 class="font-semibold text-3xl">B0{{ $transaksi->id }}</h1>
+            <h1 class="font-semibold text-3xl">B{{ $transaksi->nomor_meja }}</h1>
             <p>Mr. Blitz Basuki</p>
             <p>Daftar pesanan : Printer Kasir Lantai 2</p>
             <div class="border-b-4 border-dotted my-4"></div>
@@ -29,6 +29,15 @@
                 <p>: MRB Waiter {{ $transaksi->cashier->id }}</p>
                 <p>CASHIER</p>
                 <p>: MRB Kasir {{ $transaksi->cashier->name }}</p>
+                <p>NOMOR PESANAN</p>
+                <p>: @if ($transaksi->tipe_pesanan == 'Dine In')
+                        1{{ $transaksi->id }}
+                    @elseif ($transaksi->tipe_pesanan == 'Delivery')
+                        2{{ $transaksi->id }}
+                    @elseif ($transaksi->tipe_pesanan == 'Take Away')
+                        3{{ $transaksi->id }}
+                    @endif
+                </p>
                 <p>TIPE PESANAN</p>
                 <p>: {{ $transaksi->tipe_pesanan }}</p>
             </div>

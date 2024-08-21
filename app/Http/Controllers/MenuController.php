@@ -91,7 +91,8 @@ class MenuController extends Controller
         $transaksi = Transaction::create([
             'id_kasir' => $id_kasir,
             'tgl_transaksi' => now(),
-            'tipe_pesanan' => 'Dine In',
+            'tipe_pesanan' => $request->tipe_pesanan,
+            'nomor_meja' => $request->nomor_meja,
             'jumlah_bayar' => $request->jumlah_bayar,
         ]);
 
