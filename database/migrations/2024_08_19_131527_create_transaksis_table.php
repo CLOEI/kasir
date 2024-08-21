@@ -12,8 +12,8 @@ return new class extends Migration {
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('id_kasir');
-            $table->foreign('id_kasir')->references('name')->on('cashiers');
+            $table->string('id_kasir', 255)->collation('utf8mb4_unicode_ci');
+            $table->foreign('id_kasir')->references('name')->on('cashiers')->onDelete('cascade');
             $table->timestamp('tgl_transaksi');
             $table->integer('jumlah_bayar');
             $table->enum('tipe_pesanan', ['Dine In', 'Take Away', 'Delivery']);
