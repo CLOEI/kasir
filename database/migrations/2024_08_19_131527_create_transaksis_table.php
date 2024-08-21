@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_kasir');
+            $table->foreignId('id_kasir')->constrained('cashiers', 'name');
             $table->timestamp('tgl_transaksi');
             $table->integer('jumlah_bayar');
             $table->enum('tipe_pesanan', ['Dine In', 'Take Away', 'Delivery']);

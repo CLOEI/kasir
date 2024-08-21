@@ -11,4 +11,9 @@ class Cashier extends Model
     protected $table = "cashiers";
     protected $fillable = ['name'];
     public $timestamps = false;
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'id_kasir', 'name');
+    }
 }
