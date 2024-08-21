@@ -12,7 +12,8 @@ return new class extends Migration {
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_kasir')->constrained('cashiers', 'name');
+            $table->string('id_kasir');
+            $table->foreign('id_kasir')->references('name')->on('cashiers');
             $table->timestamp('tgl_transaksi');
             $table->integer('jumlah_bayar');
             $table->enum('tipe_pesanan', ['Dine In', 'Take Away', 'Delivery']);
